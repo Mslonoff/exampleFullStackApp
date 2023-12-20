@@ -1,17 +1,17 @@
 import express from 'express';
 import path from 'path';
 import pg from 'pg';
+import 'dotenv/config';
 
 const { Pool } = pg;
 const app = express();
 
 const expressPort = 8002;
-
+// const db = new 
+const connectionString = process.env.PG_DATABASE_URL; // hiding to prevent hacking?
+console.log(connectionString);
 const pool = new Pool ({
-  user: 'kevingoble',
-  host: 'localhost',
-  database: 'items',
-  port: 5432
+  connectionString,
 });
 
 app.use(express.static('public'));
